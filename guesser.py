@@ -5,19 +5,21 @@ c= {'row1': [4,5,6,7,12,13,14,15], 'row2': [20,21,22,23,28,29,30,31], 'row3': [3
 d= {'row1': [8,9,10,11,12,13,14,15], 'row2': [24,25,26,27,28,29,30,31], 'row3': [40,41,42,43,44,45,46,47], 'row4': [56,57,58,59,60,61,62,63]}
 e= {'row1': [16,17,18,19,20,21,22,23], 'row2': [24,25,26,27,28,29,30,31], 'row3': [48,49,50,51,52,53,54,55], 'row4': [56,57,58,59,60,61,62,63]}
 f= {'row1': [32,33,34,35,36,37,38,39], 'row2': [40,41,42,43,44,45,46,47], 'row3': [48,49,50,51,52,53,54,55], 'row4': [56,57,58,59,60,61,62,63]}
-global resultaat
-resultaat= int(0)
+global result
+result= int(0)
+
+input("Ready to play? Pick a number from 1 - 63. Press enter to continue :) ")
 
 def guesser(cardnr):
-    global resultaat
+    global result
     df= pd.DataFrame(eval(cardnr))
     print(df.to_string(index=False))
-    cardres= input("zit je nummer in dit veld? Y/N")
+    cardres= input("Is your number displayed in any of the above rows? Y/N ")
     if cardres == "Y" or cardres == "y":
-        resultaat= resultaat + df['row1'].iloc[0]
+        result= result + df['row1'].iloc[0]
     else: return
 
 cardarray = array = ['a','b','c','d','e','f']
 for i in cardarray:
     guesser(i)
-print("Jouw nummer is: " + str(resultaat))
+print("The number you picked is: " + str(result))
